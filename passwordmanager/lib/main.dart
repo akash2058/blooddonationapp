@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:passwordmanager/homepage.dart';
-import 'package:passwordmanager/view/loginview/loginview.dart';
+import 'package:passwordmanager/view/welcomescreen.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: LoginView(),
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: Welcome(),
   ));
 }
