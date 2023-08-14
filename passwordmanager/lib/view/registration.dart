@@ -13,6 +13,10 @@ class RegisterView extends StatelessWidget {
     TextEditingController passwordcontroller = TextEditingController();
     TextEditingController usernamecontroller = TextEditingController();
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,

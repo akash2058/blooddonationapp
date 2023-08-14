@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:passwordmanager/customwidget/custombutton.dart';
-import 'package:passwordmanager/customwidget/customtextform.dart';
 import 'package:passwordmanager/utilities/colors.dart';
 import 'package:passwordmanager/utilities/icons.dart';
 import 'package:passwordmanager/view/loginview.dart';
@@ -60,8 +59,10 @@ class Welcome extends StatelessWidget {
                   text: 'Login',
                   backgroundcolor: const Color.fromARGB(255, 221, 143, 235),
                   onpressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginView()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginView()));
                   }),
             ],
           ),

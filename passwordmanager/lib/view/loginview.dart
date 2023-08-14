@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:passwordmanager/customwidget/custombutton.dart';
 import 'package:passwordmanager/customwidget/customtextform.dart';
+import 'package:passwordmanager/dashboard.dart';
 import 'package:passwordmanager/utilities/colors.dart';
 import 'package:passwordmanager/utilities/icons.dart';
 
@@ -12,6 +13,11 @@ class LoginView extends StatelessWidget {
     TextEditingController emailcontroller = TextEditingController();
     TextEditingController passwordcontroller = TextEditingController();
     return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -64,7 +70,10 @@ class LoginView extends StatelessWidget {
               CustomButton(
                   text: 'Login',
                   backgroundcolor: Appcolors.primarypurple,
-                  onpressed: () {})
+                  onpressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Dashboard()));
+                  })
             ],
           ),
         ),
