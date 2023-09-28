@@ -1,69 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:passwordmanager/customwidget/custombutton.dart';
-import 'package:passwordmanager/utilities/colors.dart';
-import 'package:passwordmanager/utilities/icons.dart';
-import 'package:passwordmanager/view/loginview.dart';
-import 'package:passwordmanager/view/registration.dart';
 
-class Welcome extends StatelessWidget {
+import 'package:passwordmanager/view/loginview.dart';
+
+class Welcome extends StatefulWidget {
   const Welcome({super.key});
 
   @override
+  State<Welcome> createState() => _WelcomeState();
+}
+
+class _WelcomeState extends State<Welcome> {
+  Future<void> _navigateToMainScreen() async {
+    await Future.delayed(
+        const Duration(seconds: 2)); // Set the duration you want
+    // ignore: use_build_context_synchronously
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (context) => const LoginView()),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _navigateToMainScreen();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage(Appicons.loginbackground))),
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
+    return const Scaffold(
+      body: Padding(
+        padding: EdgeInsets.all(12.0),
+        child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(
-                height: 40,
+              SizedBox(
+                height: 20,
               ),
-              const Text(
-                'Welcome',
+              Text(
+                'Welcome to the Keysafe',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 20,
               ),
-              Container(
-                height: MediaQuery.of(context).size.height * 0.25,
-                width: MediaQuery.of(context).size.width,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        fit: BoxFit.contain,
-                        image: AssetImage(Appicons.loginicon))),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              CustomButton(
-                  text: 'Register',
-                  backgroundcolor: Appcolors.primarypurple,
-                  onpressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => RegisterView()));
-                  }),
-              const SizedBox(
-                height: 20,
-              ),
-              CustomButton(
-                  text: 'Login',
-                  backgroundcolor: const Color.fromARGB(255, 221, 143, 235),
-                  onpressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginView()));
-                  }),
+              CircularProgressIndicator()
             ],
           ),
         ),
